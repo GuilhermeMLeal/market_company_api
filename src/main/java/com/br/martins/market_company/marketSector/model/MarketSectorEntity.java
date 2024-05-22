@@ -1,6 +1,6 @@
-package com.br.martins.market_company.models;
+package com.br.martins.market_company.marketSector.model;
 
-import com.br.martins.market_company.dto.MarketSectorDTO;
+import com.br.martins.market_company.marketSector.dto.MarketSectorDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

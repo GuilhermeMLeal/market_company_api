@@ -1,4 +1,4 @@
-package com.br.martins.market_company.controllers;
+package com.br.martins.market_company.marketSector.controller;
 
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
