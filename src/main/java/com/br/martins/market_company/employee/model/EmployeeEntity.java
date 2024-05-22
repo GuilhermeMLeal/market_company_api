@@ -1,7 +1,7 @@
-package com.br.martins.market_company.models;
+package com.br.martins.market_company.employee.model;
 
-import com.br.martins.market_company.dto.MarketSectorDTO;
-import com.br.martins.market_company.dto.WorkerDTO;
+import com.br.martins.market_company.employee.dto.EmployeeDTO;
+import com.br.martins.market_company.marketSector.model.MarketSectorEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "Worker_Table")
-public class WorkerEntity {
+public class EmployeeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_worker;
@@ -35,7 +35,7 @@ public class WorkerEntity {
     @Column(name = "PASSWORD_WORKER")
     private String password_worker;
 
-    public WorkerEntity(WorkerDTO dto_entity){
+    public EmployeeEntity(EmployeeDTO dto_entity){
         this.id_worker = dto_entity.id_worker();
         this.sector_market = dto_entity.sector_market();
         this.name_worker = dto_entity.name_worker();
