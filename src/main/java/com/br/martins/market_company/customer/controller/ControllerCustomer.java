@@ -1,8 +1,8 @@
-package com.br.martins.market_company.controllers;
+package com.br.martins.market_company.customer.controller;
 
-import com.br.martins.market_company.dto.CustomersDTO;
-import com.br.martins.market_company.models.CustomersEntity;
-import com.br.martins.market_company.repository.RepositoryCustomers;
+import com.br.martins.market_company.customer.dto.CustomersDTO;
+import com.br.martins.market_company.customer.model.CustomersEntity;
+import com.br.martins.market_company.customer.repository.RepositoryCustomers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/customer")
@@ -24,7 +25,7 @@ public class ControllerCustomer {
     }
 
     @GetMapping("/{id}")
-    public CustomersEntity get_a_customer(@PathVariable int id){
+    public CustomersEntity get_a_customer(@PathVariable UUID id){
         Optional<CustomersEntity> optionalCustomer = custom_repo.findById(id);
         return optionalCustomer.orElseThrow(()->new ResponseStatusException
                 (HttpStatus.NOT_FOUND, "Customer not found"));
@@ -37,7 +38,7 @@ public class ControllerCustomer {
     }
 
     @DeleteMapping("<{id}>")
-    public String delete_a_customer(@PathVariable int id){
+    public String delete_a_customer(@PathVariable UUID id){
         CustomersEntity customer = get_a_customer(id);
         if (customer!=null){
             custom_repo.delete(customer);
@@ -48,7 +49,7 @@ public class ControllerCustomer {
     }
 
     @PutMapping
-    public CustomersEntity updateCustomer(@PathVariable int id, @RequestBody CustomersDTO dtoCustomer){
+    public CustomersEntity updateCustomer(@PathVariable UUID id, @RequestBody CustomersDTO dtoCustomer){
         CustomersEntity existingCustomer = custom_repo.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
 

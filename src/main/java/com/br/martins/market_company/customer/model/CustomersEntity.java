@@ -1,23 +1,18 @@
-package com.br.martins.market_company.models;
+package com.br.martins.market_company.customer.model;
 
-import com.br.martins.market_company.dto.CustomersDTO;
+import com.br.martins.market_company.customer.dto.CustomersDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import java.util.UUID;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "Customer_Table")
 public class CustomersEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID idUser;
 
     @Column(name = "NAME_USER")
     private String nameUser;
@@ -32,7 +27,6 @@ public class CustomersEntity {
     private String passwordUser;
 
     public CustomersEntity(CustomersDTO dtoEntity) {
-        this.idUser = dtoEntity.idUser();
         this.nameUser = dtoEntity.nameUser();
         this.ageUser = dtoEntity.ageUser();
         this.emailUser = dtoEntity.emailUser();
